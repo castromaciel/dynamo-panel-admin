@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  getFirestore, getDocs, collection,
+} from 'firebase/firestore';
+import { useEffect, useState } from 'react';
+import Table from './components/Table/Table';
+import app from './db/firebase';
 
-function App() {
+const db = getFirestore(app);
+
+const App = () => {
+  const [users, setUsers] = useState([]);
+  const getUsers = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, 'usuarios'));
+      querySnapshot.forEach((doc) => {
+        setUsers((prev) => [...prev, doc.data()]);
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    getUsers();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='d-flex'>
+      <Table users={users}/>
     </div>
   );
-}
+};
 
 export default App;
