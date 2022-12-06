@@ -2,6 +2,7 @@ import {
   getFirestore, getDocs, collection,
 } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
+import Sidebar from './components/Sidebar/Sidebar';
 import Table from './components/Table/Table';
 import app from './db/firebase';
 
@@ -25,6 +26,7 @@ const App = () => {
 
   return (
     <div className='d-flex'>
+      <Sidebar />
       <Table users={users}/>
     </div>
   );
