@@ -1,6 +1,7 @@
 export const getKeys = (array) => {
-  if (array.users.length > 0) {
-    const keys = Object.keys(array.users[1]);
+  console.log(array);
+  if (array.data.length > 0) {
+    const keys = Object.keys(array.data[0]);
     return keys.sort();
   }
 };
