@@ -1,5 +1,5 @@
 import {
-  getFirestore, getDocs, collection,
+  addDoc, getFirestore, getDocs, collection,
 } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { Sidebar, Table } from './components';
@@ -32,17 +32,37 @@ const App = () => {
       console.error(error);
     }
   };
+
+  // Agrega beneficio a la DataBase
+  const addBeneficio = async () => {
+    const infoBeneficio = {
+      buttonlabel: 'Cancelar',
+      descripcion: 'Descripcion de Beneficio n',
+      isactive: true,
+      onlystaff: false,
+      title: 'Beneficio n',
+      url: 'https://http2.mlstatic.com/D_NQ_NP_888270-MLA45805765296_052021-O.webp',
+    };
+    try {
+      const data = await addDoc(collection(db, 'beneficios'), infoBeneficio);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getUsers();
     getBenefits();
+    addBeneficio();
   }, []);
 
   return (
     <div className='d-flex'>
       <Sidebar />
       <div className='d-flex flex-column'>
-        <Table data={users} title={'Users'}/>
-        <Table data={benefits} title={'Benefits'}/>
+        <Table data={users} title={'Users'} />
+        <Table data={benefits} title={'Benefits'} />
       </div>
     </div>
   );
