@@ -1,5 +1,5 @@
 import {
-  addDoc, getFirestore, getDocs, collection,
+  doc, addDoc, updateDoc, getFirestore, getDocs, collection,
 } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { Sidebar, Table } from './components';
@@ -14,8 +14,8 @@ const App = () => {
   const getUsers = async () => {
     try {
       const querySnapshot = await getDocs(collection(db, 'usuarios'));
-      querySnapshot.forEach((doc) => {
-        setUsers((prev) => [...prev, doc.data()]);
+      querySnapshot.forEach((docu) => {
+        setUsers((prev) => [...prev, docu.data()]);
       });
     } catch (error) {
       console.error(error);
@@ -24,16 +24,16 @@ const App = () => {
   const getBenefits = async () => {
     try {
       const querySnapshot = await getDocs(collection(db, 'beneficios'));
-      querySnapshot.forEach((doc) => {
-        console.log(doc);
-        setBenefits((prev) => [...prev, doc.data()]);
+      querySnapshot.forEach((docu) => {
+        console.log(docu);
+        setBenefits((prev) => [...prev, docu.data()]);
       });
     } catch (error) {
       console.error(error);
     }
   };
 
-  // Agrega beneficio a la DataBase
+  // Agrega un registro al documento beneficio
   const addBeneficio = async () => {
     const infoBeneficio = {
       buttonlabel: 'Cancelar',
@@ -47,24 +47,45 @@ const App = () => {
       const data = await addDoc(collection(db, 'beneficios'), infoBeneficio);
       console.log(data);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
+  };
+
+  // Update Documento Beneficio
+  const updateBeneficios = async () => {
+    const beneficioRef = doc(db, 'beneficios', '1xWK8guahm9EIg5O7GpM');
+
+    // Set the "onlystaff" field of the document x id '1xWK8guahm9EIg5O7GpM'
+    await updateDoc(beneficioRef, {
+      onlystaff: true,
+    });
+  };
+
+  // Delete Logic Beneficio
+  const deleteBeneficios = async () => {
+    const beneficioRef = doc(db, 'beneficios', '1xWK8guahm9EIg5O7GpM');
+
+    // Set the "isactive" field of the document x id '1xWK8guahm9EIg5O7GpM'
+    await updateDoc(beneficioRef, {
+      isactive: true,
+    });
   };
 
   useEffect(() => {
     getUsers();
     getBenefits();
     addBeneficio();
+    updateBeneficios();
   }, []);
 
   return (
-    <div className='d-flex'>
-      <Sidebar />
-      <div className='d-flex flex-column'>
-        <Table data={users} title={'Users'} />
-        <Table data={benefits} title={'Benefits'} />
-      </div>
+  <div className='d-flex'>
+    <Sidebar />
+    <div className='d-flex flex-column'>
+      <Table data={users} title={'Users'} />
+      <Table data={benefits} title={'Benefits'} />
     </div>
+  </div>
   );
 };
 
