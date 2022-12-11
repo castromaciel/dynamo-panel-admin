@@ -10,12 +10,12 @@ const db = getFirestore(app);
 const App = () => {
   const [users, setUsers] = useState([]);
   const [benefits, setBenefits] = useState([]);
-
   const getUsers = async () => {
     try {
       const querySnapshot = await getDocs(collection(db, 'usuarios'));
       querySnapshot.forEach((doc) => {
         setUsers((prev) => [...prev, doc.data()]);
+        console.log(doc.id);
       });
     } catch (error) {
       console.error(error);
@@ -41,8 +41,8 @@ const App = () => {
     <div className='d-flex'>
       <Sidebar />
       <div className='d-flex flex-column'>
-        <Table data={users} title={'Users'}/>
-        <Table data={benefits} title={'Benefits'}/>
+        <Table data={users} title={'Users'} />
+        <Table data={benefits} title={'Benefits'} />
       </div>
     </div>
   );
