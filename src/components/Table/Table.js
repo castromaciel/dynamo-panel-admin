@@ -1,25 +1,31 @@
-import React, { } from 'react';
+import React from 'react';
 import { getKeys } from '../../helpers/getKeys';
 
-const Table = (props) => {
-  console.log(props.title);
-  const columns = getKeys(props);
+const Table = ({ data, title }) => {
+  const columns = getKeys(data);
   return (
-    <div className='d-flex flex-column'>
-      <h2 style={{ margin: '8px 0px 8px 14rem' }}>{props.title}</h2>
-      <table className="table" style={{ height: '200px', margin: '0 0 0 14rem', overflow: 'auto' }} >
+    <div className='d-flex flex-column' style={{ width: 'calc(100vw - 15rem)' }}>
+      <h2 style={{ margin: '8px 0px 8px 14rem' }}>{title}</h2>
+      <table className="table" style={{ height: 'auto', margin: '0 0 0 13.25rem' }} >
         <thead>
           <tr>
             { columns?.map((titles) => <th key={titles}>{ titles }</th>)}
+            <th>Options</th>
           </tr>
         </thead>
         <tbody>
           {
-            props?.data?.map((value, index) => (
+            data?.map((value, index) => (
               <tr key={index}>
                 {
-                  columns?.map((title) => <td key={title}>{ value[title] }</td>)
+                  columns?.map((colTitle) => <td key={colTitle}>{ value[colTitle] }</td>)
                 }
+                <td>
+                  <div className='w-100 d-flex justify-content-around'>
+                    <i className='bi bi-trash'></i>
+                    <i className='bi-pencil-square'></i>
+                  </div>
+                </td>
               </tr>
             ))
           }
