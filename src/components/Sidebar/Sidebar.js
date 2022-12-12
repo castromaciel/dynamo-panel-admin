@@ -1,9 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import './sidebar.css';
 
 const Sidebar = () => {
   return (
-    <div className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style={{ width: '13rem', height: '100vh', position: 'fixed' }}>
+    <div className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark sidebar">
       <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none text-white">
         <span className="fs-4">Administration</span>
       </a>
