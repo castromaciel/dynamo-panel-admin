@@ -1,6 +1,7 @@
 import React from 'react';
 import { getKeys } from '../../helpers/getKeys';
 import Modal from '../Modal/Modal';
+import './table.css';
 
 const Table = ({ data, title }) => {
   const columns = getKeys(data);

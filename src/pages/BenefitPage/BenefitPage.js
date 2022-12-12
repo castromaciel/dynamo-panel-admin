@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import {
   doc, addDoc, updateDoc, getFirestore, getDocs, collection,
 } from 'firebase/firestore';
-import { Modal, Table } from '../../components';
+import { Spinner, Table } from '../../components';
 import app from '../../db/firebase';
 
 const db = getFirestore(app);
@@ -57,7 +57,7 @@ const BenefitPage = () => {
     getBenefits();
   }, []);
 
-  if (!benefits) return null;
+  if (benefits.length === 0) return <Spinner />;
 
   return (
     <div className='d-flex flex-column'>
