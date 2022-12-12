@@ -2,14 +2,13 @@ import { useEffect, useState } from 'react';
 import {
   getFirestore, getDocs, collection,
 } from 'firebase/firestore';
-import { Table } from '../../components';
+import { Modal, Table } from '../../components';
 import app from '../../db/firebase';
 
 const db = getFirestore(app);
 
 const UsersPage = () => {
   const [users, setUsers] = useState([]);
-
   const getUsers = async () => {
     try {
       const querySnapshot = await getDocs(collection(db, 'usuarios'));

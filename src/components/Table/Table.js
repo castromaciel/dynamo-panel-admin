@@ -7,6 +7,9 @@ const Table = ({ data, title }) => {
   return (
     <div className='d-flex flex-column' style={{ width: 'calc(100vw - 15rem)' }}>
       <h2 style={{ margin: '8px 0px 8px 14rem' }}>{title}</h2>
+      <button data-bs-toggle="modal" data-bs-target="#exampleModal" style={{
+        width: '100px', height: '50px', backgroundColor: '#000', color: '#fff', position: 'absolute', left: '500px',
+      }}>clickme</button>
       <table className="table" style={{ height: 'auto', margin: '0 0 0 13.25rem' }} >
         <thead>
           <tr>
@@ -32,7 +35,7 @@ const Table = ({ data, title }) => {
           }
         </tbody>
       </table>
-      <Modal />
+      <Modal data={data} title={title} />
     </div>
   );
 };
