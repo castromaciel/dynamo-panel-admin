@@ -1,5 +1,6 @@
 import React from 'react';
 import { getKeys } from '../../helpers/getKeys';
+import './table.css';
 
 const Table = ({ data, title }) => {
   const columns = getKeys(data);
