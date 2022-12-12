@@ -1,5 +1,6 @@
 import React from 'react';
 import { getKeys } from '../../helpers/getKeys';
+import Modal from '../Modal/Modal';
 import './table.css';
 
 const Table = ({ data, title }) => {
@@ -7,10 +8,13 @@ const Table = ({ data, title }) => {
   return (
     <div className='d-flex flex-column' style={{ width: 'calc(100vw - 15rem)' }}>
       <h2 style={{ margin: '8px 0px 8px 14rem' }}>{title}</h2>
+      <button data-bs-toggle="modal" data-bs-target="#exampleModal" style={{
+        width: '100px', height: '50px', backgroundColor: '#000', color: '#fff', position: 'absolute', left: '500px',
+      }}>clickme</button>
       <table className="table" style={{ height: 'auto', margin: '0 0 0 13.25rem' }} >
         <thead>
           <tr>
-            { columns?.map((titles) => <th key={titles}>{ titles }</th>)}
+            {columns?.map((titles) => <th key={titles}>{titles}</th>)}
             <th>Options</th>
           </tr>
         </thead>
@@ -19,7 +23,7 @@ const Table = ({ data, title }) => {
             data?.map((value, index) => (
               <tr key={index}>
                 {
-                  columns?.map((colTitle) => <td key={colTitle}>{ value[colTitle] }</td>)
+                  columns?.map((colTitle) => <td key={colTitle}>{value[colTitle]}</td>)
                 }
                 <td>
                   <div className='w-100 d-flex justify-content-around'>
@@ -32,6 +36,7 @@ const Table = ({ data, title }) => {
           }
         </tbody>
       </table>
+      <Modal data={data} title={title} />
     </div>
   );
 };

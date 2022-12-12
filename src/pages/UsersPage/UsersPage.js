@@ -9,7 +9,6 @@ const db = getFirestore(app);
 
 const UsersPage = () => {
   const [users, setUsers] = useState([]);
-
   const getUsers = async () => {
     try {
       const querySnapshot = await getDocs(collection(db, 'usuarios'));
