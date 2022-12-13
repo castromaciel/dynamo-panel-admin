@@ -1,7 +1,7 @@
 import React from 'react';
 import Swal from 'sweetalert2';
 import { getFirestore, doc, deleteDoc } from 'firebase/firestore';
-import { getKeys } from '../../helpers/getKeys';
+import { getKeys } from '../../helpers';
 import Modal from '../Modal/Modal';
 import './table.css';
 import app from '../../db/firebase';
