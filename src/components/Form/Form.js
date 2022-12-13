@@ -23,7 +23,7 @@ function Form({ title }) {
           </div>
           <div className='col'>
             <label className='form-label'>Rol</label>
-            <select className='form-select'>
+            <select className='form-select' defaultValue={'user'}>
               <option selected>Seleccione un rol</option>
               <option value='admin'>Admin</option>
               <option value='staff'>Staff</option>
