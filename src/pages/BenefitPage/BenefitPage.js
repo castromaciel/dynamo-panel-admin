@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import {
-  doc, addDoc, updateDoc, getFirestore, getDocs, collection,
+  doc, addDoc, updateDoc, getFirestore, getDocs, collection, deleteDoc,
 } from 'firebase/firestore';
 import { Spinner, Table } from '../../components';
 import app from '../../db/firebase';
@@ -14,7 +14,10 @@ const BenefitPage = () => {
     try {
       const querySnapshot = await getDocs(collection(db, 'beneficios'));
       querySnapshot.forEach((docu) => {
-        setBenefits((prev) => [...prev, docu.data()]);
+        setBenefits((prev) => [...prev, {
+          ...docu.data(),
+          id: docu.id,
+        }]);
       });
     } catch (error) {
       console.error(error);
@@ -45,14 +48,6 @@ const BenefitPage = () => {
     });
   };
 
-  const deleteBeneficios = async () => {
-    const beneficioRef = doc(db, 'beneficios', '1xWK8guahm9EIg5O7GpM');
-
-    await updateDoc(beneficioRef, {
-      isactive: true,
-    });
-  };
-
   useEffect(() => {
     getBenefits();
   }, []);
@@ -61,7 +56,7 @@ const BenefitPage = () => {
 
   return (
     <div className='d-flex flex-column'>
-      <Table data={benefits} title={'Benefits'} />
+      <Table data={benefits} title={'Beneficios'} />
     </div>
   );
 };

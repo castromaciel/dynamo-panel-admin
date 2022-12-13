@@ -13,7 +13,14 @@ const UsersPage = () => {
     try {
       const querySnapshot = await getDocs(collection(db, 'usuarios'));
       querySnapshot.forEach((docu) => {
-        setUsers((prev) => [...prev, docu.data()]);
+        setUsers(
+          (prev) => [
+            ...prev, {
+              ...docu.data(),
+              id: docu.id,
+            },
+          ],
+        );
       });
     } catch (error) {
       console.error(error);
@@ -28,7 +35,7 @@ const UsersPage = () => {
 
   return (
     <div className='d-flex flex-column'>
-      <Table data={users} title={'Users'} />
+      <Table data={users} title={'Usuarios'} />
     </div>
   );
 };
