@@ -30,7 +30,7 @@ const Table = ({ data, title }) => {
           className='bi bi-plus-circle'
           style={{ fontSize: '25px', marginTop: '5px', marginLeft: '1rem' }}
           data-bs-toggle='modal'
-          data-bs-target='#exampleModal'
+          data-bs-target='#formModal'
         ></i>
       </div>
       <table className='table' style={{ height: 'auto', margin: '0 0 0 13.25rem' }} >
@@ -64,7 +64,7 @@ const Table = ({ data, title }) => {
                         if (result.isConfirmed) deleteRowData(e.nativeEvent.path[3].id);
                       });
                     }}></i>
-                    <i className='bi bi-pencil-square' data-bs-toggle='modal' data-bs-target='#exampleModal'></i>
+                    <i className='bi bi-pencil-square' data-bs-toggle='modal' data-bs-target='#formModal'></i>
                   </div>
                 </td>
               </tr>
