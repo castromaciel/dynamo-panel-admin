@@ -4,8 +4,8 @@ import Spinner from './Spinner';
 
 jest.mock('lottie-react');
 
-describe('Sidebar', () => {
-  test('renders Administración at sidebar', () => {
+describe('Spinner', () => {
+  test('renders Spinner', () => {
     render(
       <BrowserRouter>
         <Spinner />

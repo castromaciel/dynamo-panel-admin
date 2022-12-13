@@ -24,30 +24,6 @@ const BenefitPage = () => {
     }
   };
 
-  const addBeneficio = async () => {
-    const infoBeneficio = {
-      buttonlabel: 'Cancelar',
-      descripcion: 'Descripcion de Beneficio n',
-      isactive: true,
-      onlystaff: false,
-      title: 'Beneficio n',
-      url: 'https://http2.mlstatic.com/D_NQ_NP_888270-MLA45805765296_052021-O.webp',
-    };
-    try {
-      const data = await addDoc(collection(db, 'beneficios'), infoBeneficio);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const updateBeneficios = async () => {
-    const beneficioRef = doc(db, 'beneficios', '1xWK8guahm9EIg5O7GpM');
-
-    await updateDoc(beneficioRef, {
-      onlystaff: true,
-    });
-  };
-
   useEffect(() => {
     getBenefits();
   }, []);
