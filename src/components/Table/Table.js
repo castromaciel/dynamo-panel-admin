@@ -24,11 +24,16 @@ const Table = ({ data, title }) => {
   const columns = getKeys(data);
   return (
     <div className='d-flex flex-column' style={{ width: 'calc(100vw - 15rem)' }}>
-      <h2 style={{ margin: '8px 0px 8px 14rem' }}>{title}</h2>
-      <button data-bs-toggle="modal" data-bs-target="#exampleModal" style={{
-        width: '100px', height: '50px', backgroundColor: '#000', color: '#fff', position: 'absolute', left: '500px',
-      }}>clickme</button>
-      <table className="table" style={{ height: 'auto', margin: '0 0 0 13.25rem' }} >
+      <div className='d-flex align-items-center'>
+        <h2 style={{ margin: '8px 0px 8px 14rem' }}>{title}</h2>
+        <i
+          className='bi bi-plus-circle'
+          style={{ fontSize: '25px', marginTop: '5px', marginLeft: '1rem' }}
+          data-bs-toggle='modal'
+          data-bs-target='#formModal'
+        ></i>
+      </div>
+      <table className='table' style={{ height: 'auto', margin: '0 0 0 13.25rem' }} >
         <thead>
           <tr>
             {columns?.map((titles) => <th key={titles}>{titles}</th>)}
@@ -59,7 +64,7 @@ const Table = ({ data, title }) => {
                         if (result.isConfirmed) deleteRowData(e.nativeEvent.path[3].id);
                       });
                     }}></i>
-                    <i className='bi bi-pencil-square'></i>
+                    <i className='bi bi-pencil-square' data-bs-toggle='modal' data-bs-target='#formModal'></i>
                   </div>
                 </td>
               </tr>
@@ -68,7 +73,7 @@ const Table = ({ data, title }) => {
         </tbody>
       </table>
       <Modal data={data} title={title} />
-    </div>
+    </div >
   );
 };
 
