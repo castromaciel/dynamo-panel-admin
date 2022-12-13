@@ -37,7 +37,7 @@ function Form({ title }) {
               <input type='password' className='form-control' />
             </div>
             <div className='col'>
-              <label className='form-label'>Repita su contraseña</label>
+              <label className='form-label'>Repita su Contraseña</label>
               <input type='password' className='form-control' />
             </div>
           </div>
