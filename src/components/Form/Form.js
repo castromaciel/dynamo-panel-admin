@@ -3,68 +3,87 @@ import './style.css';
 
 function Form({ title }) {
   return (
-    <div >
-      {
-        ((title === 'Users')
-          && (<form style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', marginLeft: '1.5rem' }}>
-            <div className='inputContainer'>
-              <p className='titleInput'>Full Name</p>
-              <input className='input' type='text'></input>
-            </div>
-            <div className='inputContainer'>
-              <p className='titleInput'>Email</p>
-              <input className='input' type='email'></input>
-            </div>
-            <div className='inputContainer'>
-              <p className='titleInput'>Photo</p>
-              <input className='input' type='text'></input>
-            </div>
-            <div className='inputContainer'>
-              <p className='titleInput'>Role</p>
-              <select className='input'>
-                <option value="user">User</option>
-                <option value="staff">Staff</option>
-                <option value="admin">Admin</option>
-              </select>
-            </div>
-            <div className='inputContainer'>
-              <p className='titleInput'>Password</p>
-              <input className='input' type='password' />
-            </div>
-            <div className='inputContainer'>
-              <p className='titleInput'>Confirm Password</p>
-              <input className='input' type='password' />
-            </div>
-            <div className='inputContainer'>
-              <p className='titleInput'>Phone Number</p>
-              <input className='input' type='number' />
-            </div>
-          </form>))
-        || <form className='formContainer'>
-          <div className='inputContainer'>
-            <p className='titleInput'>Name</p>
-            <input className='input' type='text'></input>
+    <div className='container'>
+      {(title === 'Users' && (
+        <form>
+        <div className='row'>
+          <div className='col'>
+            <label className='form-label'>Nombre Completo</label>
+            <input className='form-control' type='text' />
           </div>
-          <div className='inputContainer'>
-            <p className='titleInput'>Button Label</p>
-            <input className='input' type='text'></input>
+          <div className='col'>
+            <label className='form-label'>Email</label>
+            <input className='form-control' type='email' />
           </div>
-          <div className='inputContainer'>
-            <p className='titleInput'>Photo</p>
-            <input className='input' type='text' />
+        </div>
+        <div className='row mt-2'>
+          <div className='col'>
+            <label className='form-label'>Imagen</label>
+            <input type='text' className='form-control' />
           </div>
-          <div className='inputContainer'>
-            <p className='titleInput'>Staff Only</p>
-            <input className='checkbox' type='checkbox' />
+          <div className='col'>
+            <label className='form-label'>Rol</label>
+            <select className='form-select'>
+              <option selected>Seleccione un rol</option>
+              <option value='admin'>Admin</option>
+              <option value='staff'>Staff</option>
+              <option value='user'>User</option>
+            </select>
           </div>
-          <div className='inputContainer' style={{ gridColumnStart: 1, gridRowStart: 3, gridColumnEnd: 3 }}>
-            <p className='titleInput' >Description</p>
-            <textarea className='input' rows={3} style={{ width: '90%' }}></textarea>
+        </div>
+        <div className='row mt-2'>
+          <div className='col'>
+            <label className='form-label'>Contraseña</label>
+            <input type='password' className='form-control' />
           </div>
-        </form>
-      }
-
-    </div >
+          <div className='col'>
+            <label className='form-label'>Repita su contraseña</label>
+            <input type='password' className='form-control' />
+          </div>
+        </div>
+        <div className='row mt-2'>
+          <div className='col'>
+            <label className='form-label'>Número de Celular</label>
+            <input type='text' className='form-control' />
+          </div>
+          <div className='col'></div>
+        </div>
+      </form>
+      )) || (
+        <form >
+          <div className="row">
+            <div className="col">
+              <label className='form-label'>Nombre</label>
+              <input type="text" className='form-control' />
+            </div>
+            <div className="col">
+              <label className='form-label'>Etiqueta del Botón</label>
+              <input type="text" className='form-control' />
+            </div>
+          </div>
+          <div className="row mt-2">
+            <div className="col">
+              <label className='form-label'>Imagen</label>
+              <input type="text" className='form-control' />
+            </div>
+            <div className="col">
+              <label className='form-label'>¿Es miembro de staff?</label>
+              <select className='form-select'>
+              <option selected>Seleccione una opción</option>
+              <option value='no'>No</option>
+              <option value='yes'>Si</option>
+            </select>
+            </div>
+          </div>
+          <div className="row mt-2">
+            <div className="col">
+              <label className='form-label'>Descripción</label>
+              <textarea className="form-control" rows="4"></textarea>
+            </div>
+          </div>
+      </form>
+      )}
+    </div>
   );
 }
 
