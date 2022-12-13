@@ -5,7 +5,7 @@ import './spinner.css';
 
 const Spinner = () => {
   return (
-    <div className='container-spinner'>
+    <div className='container-spinner' data-testid='spinner-id'>
       <Lottie animationData={triCubeLoaer} loop={true} className={'spinner'} />
     </div>
   );
