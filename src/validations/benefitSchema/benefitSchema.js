@@ -4,7 +4,7 @@ const benefitSchema = () => {
 
   const urlValidation = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
   return {
-    buttonlabel: {
+    buttonLabel: {
       required: {
         value: true,
         message: 'El campo "Etiqueta del Botón" es requerido.',
@@ -14,32 +14,32 @@ const benefitSchema = () => {
         message: 'Los caracteres permitidos son (A-Z a-z) y acentos.',
       },
     },
-    descripcion: {
+    description: {
       required: {
         value: true,
-        message: 'El campo "descripcion" es requerido.',
+        message: 'El campo "Descripción" es requerido.',
       },
       pattern: {
         value: /^[a-zA-Z0-9\sÁÉÍÓÚáéíóúÀÈÌÒÙàèìòùÄËÏÖÜäëïöüñÑ_#:@,.!$-]+$/,
         message: 'Los caracteres permitidos para la "descripcion" son (A-Z a-z 0-9) y _#:@,.!$- .',
       },
     },
-    isactive: {
+    isActive: {
       required: {
         value: true,
         message: 'El campo "isactive" es requerido.',
       },
     },
-    onlystaff: {
+    onlyStaff: {
       required: {
         value: true,
-        message: 'El campo "onlystaff" es requerido.',
+        message: 'El campo "¿Es miembro de staff?" es requerido.',
       },
     },
     title: {
       required: {
         value: true,
-        message: 'El campo "title" es requerido.',
+        message: 'El campo "Título" es requerido.',
       },
       pattern: {
         value: /^[a-zA-Z0-9\sÁÉÍÓÚáéíóúÀÈÌÒÙàèìòùÄËÏÖÜäëïöüñÑ_#:@,.!$-]+$/,
@@ -49,7 +49,7 @@ const benefitSchema = () => {
     url: {
       required: {
         value: true,
-        message: 'El campo "url" es requerido.',
+        message: 'El campo "URL Imagen" es requerido.',
       },
       pattern: {
         value: urlValidation,

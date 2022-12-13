@@ -28,7 +28,7 @@ const userSchema = () => {
         message: 'Por favor, ingrese un email correcto.',
       },
     },
-    fullname: {
+    fullName: {
       required: {
         value: true,
         message: 'El campo "Nombre Completo" es requerido.',
@@ -44,7 +44,7 @@ const userSchema = () => {
         message: 'El campo "isactive" es requerido.',
       },
     },
-    phonenumber: {
+    phoneNumber: {
       pattern: {
         value: phoneNumberValidation,
         message: 'Los caracteres permitidos para el "Número de Celular" son numéricos.',
@@ -63,8 +63,10 @@ const userSchema = () => {
       },
     },
     confirmPassword: {
-      required: true,
-      message: 'El campo "Repita su contraseña" es obligatorio',
+      required: {
+        value: true,
+        message: 'El campo "Repita su contraseña" es obligatorio',
+      },
     },
   };
 };
